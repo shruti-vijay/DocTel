@@ -17,7 +17,14 @@ const ipfs = ipfsClient.create({
   host: "ipfs.infura.io",
   port: 5001,
   protocol: "https",
+
 });
+
+// const REACT_APP_PINATA_API_KEY = "658395bb90fe88acf68a";
+// const REACT_APP_PINATA_API_SECRET =
+//   "f6cf61b48528ab2a02c9f5cd7e862b66110ef7a39afb5f9513ca568b359167a0";
+
+const urlimage="https://img.freepik.com/free-vector/prescription-template-design_23-2149731353.jpg"
 
 class TreatmentComp extends Component {
   constructor(props) {
@@ -55,26 +62,26 @@ class TreatmentComp extends Component {
   }
 
   uploadImage = (x) => {
-    console.log("Time start file to ipfs", Date.now());
-    console.log("Submitting file to ipfs...");
-    //adding file to the IPFS
-    //console.log(this.state.buffer);
-    ipfs
-      .add(this.state.buffer, (error, result) => {
-        console.log("Ipfs result", result);
-        if (error) {
-          console.log("error");
-          console.error(error);
-          return;
-        }
-        console.log("complete");
-        this.setState({ loading: true });
-      })
-      .then((response) => {
-        console.log(response.path);
+  //   console.log("Time start file to ipfs", Date.now());
+  //   console.log("Submitting file to ipfs...");
+  //   //adding file to the IPFS
+  //   //console.log(this.state.buffer);
+  //   ipfs
+  //     .add(this.state.buffer, (error, result) => {
+  //       console.log("Ipfs result", result);
+  //       if (error) {
+  //         console.log("error");
+  //         console.error(error);
+  //         return;
+  //       }
+  //       console.log("complete");
+  //       this.setState({ loading: true });
+  //     })
+  //    .then((response) => {
+        console.log(urlimage);
         if (x == 1) {
           const res = this.props.contract.methods
-            .addPrescriptionTreat(this.state.treatId, response.path)
+            .addPrescriptionTreat(this.state.treatId, urlimage)
             .send({ from: this.props.accounts, gas: 1000000 })
             .on("transactionHash", (hash) => {
               this.setState({ loading: false });
@@ -82,14 +89,14 @@ class TreatmentComp extends Component {
             });
         } else if (x == 2) {
           const res = this.props.contract.methods
-            .addReportTreat(this.state.treatId, response.path)
+            .addReportTreat(this.state.treatId, urlimage)
             .send({ from: this.props.accounts, gas: 1000000 })
             .on("transactionHash", (hash) => {
               this.setState({ loading: false });
               console.log("Time end trans ended", Date.now());
             });
         }
-      });
+  //    });
     console.log("Time end file uploaded", Date.now());
   };
 

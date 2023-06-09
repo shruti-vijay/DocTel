@@ -3,7 +3,7 @@ import { Card, CardTitle, CardBody, CardText } from "reactstrap";
 import "./AllMemComponent.css";
 
 function AllDoctorRender({ doctor }) {
-  var style1 = "bg-success text-white";
+  var style1 = "bg-danger text-white";
   return (
     <Card className={style1} style={{ height: "18rem" }}>
       <br />
@@ -15,6 +15,8 @@ function AllDoctorRender({ doctor }) {
         </CardText>
         <CardText>
           <small>Role: {doctor?.speciality}</small>
+          <br/>
+          <small>Location: {doctor?.location}</small>
         </CardText>
       </CardBody>
     </Card>
@@ -109,13 +111,13 @@ class AllMemComponent extends Component {
     return (
       <div>
         <br />
-        <h2>All Members</h2>
+        <h2>All Members & Doctors</h2>
         <br />
-        <h4>Admins</h4>
+        <h4>All Admins</h4>
         <br />
         <div className="row1">{AllAdmins}</div>
         <br />
-        <h4 style={{ clear: "both" }}>Doctors</h4>
+        <h4 style={{ clear: "both" }}>All Doctors</h4>
         <br />
         <div className="row2">{AllDoctors}</div>
         <br />

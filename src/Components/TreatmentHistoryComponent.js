@@ -18,14 +18,14 @@ function AllEventrender({ treatEv, contract, accounts }) {
       {treatEv?.event === "PrescriptionAddedTreat" ||
       treatEv?.event === "ReportAddedTreat" ? (
         <a
-          href={`https://ipfs.io/ipfs/${
+          href={`${
             treatEv?.returnValues.report || treatEv?.returnValues.prescription
           }`}
           target="_blank"
         >
           <img
             style={{ "max-width": "90%" }}
-            src={`https://ipfs.io/ipfs/${
+            src={`${
               treatEv?.returnValues.report || treatEv?.returnValues.prescription
             }`}
           />

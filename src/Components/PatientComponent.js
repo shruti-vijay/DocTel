@@ -110,7 +110,7 @@ class PatientComp extends Component {
   render() {
     return (
       <div className="container">
-        <h2>Add Patient</h2>
+        <h2>Patient Registration</h2>
 
         <Form onSubmit={this.handleSubmit}>
           <FormGroup row>

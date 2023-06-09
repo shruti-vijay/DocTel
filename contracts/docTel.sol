@@ -71,12 +71,12 @@ contract DocTel{
     }
 
     modifier onlyDoctor() {
-        require(doctorAddrs[msg.sender].doctorAddress != address(0x0),"Not Admin");
+        require(doctorAddrs[msg.sender].doctorAddress != address(0x0),"Not Doctor");
         _;
     }
 
     modifier onlyAdminDoctor() {
-        require((adminAddrs[msg.sender].adminAddr != address(0x0)) || (doctorAddrs[msg.sender].doctorAddress != address(0x0)),"Not Admin");
+        require((adminAddrs[msg.sender].adminAddr != address(0x0)) || (doctorAddrs[msg.sender].doctorAddress != address(0x0)),"Neither Admin nor Doctor");
         _;
     }
 
@@ -152,7 +152,7 @@ contract DocTel{
             adminAddrs[_adminAddr] = adm;
         }   
         else {
-            Admin memory adm;
+            Admin memory adm=adminAadhars[_adminAadhar];
             adm.adminAadhar = _adminAadhar;
             adm.adminAddr = _adminAddr;
             adm.role = _role;

@@ -201,7 +201,7 @@ class SignUp extends Component {
   render() {
     return (
       <React.Fragment>
-        <h1 className="head">SignUp Page</h1>
+        <h1 className="head">Register</h1>
         <div className="row">{this.state.validate}</div>
         <div className="fullbox">
           <div className="box1">
